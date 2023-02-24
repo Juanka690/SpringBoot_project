@@ -24,7 +24,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             return query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Error al obtener la lista de usuarios",e );
+            throw new RuntimeException("Error: ",e );
         }
     }
     @Override
