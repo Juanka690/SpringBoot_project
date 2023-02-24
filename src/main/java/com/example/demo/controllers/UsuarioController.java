@@ -1,6 +1,5 @@
 package com.example.demo.controllers;
 
-import com.example.demo.dao.UserDao;
 import com.example.demo.dao.UsuarioDao;
 import com.example.demo.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,6 @@ import java.util.List;
 public class UsuarioController {
     @Autowired
     private UsuarioDao usuarioDaoImpl;
-
-    @Autowired
-    private UserDao userDao;
 
     @RequestMapping(value = "api/users/{id}")
     public Usuario getUsuario(@PathVariable Long id) {
@@ -63,22 +59,6 @@ public class UsuarioController {
     public List<Usuario> getUsuarios() {
         return usuarioDaoImpl.getUsuarios();
     }
-
-    @GetMapping(value = "api/users/v2")
-    public List<Usuario> getUsuariosV2() {
-        return userDao.getUsuarios();
-    }
-
-    @PostMapping(value = "api/findByEmail")
-    public Usuario findByEmail(@RequestBody String email) {
-        return userDao.findByEmail(email);
-    }
-
-    @PostMapping(value = "api/saveUsuario")
-    public void saveUsuario(@RequestBody Usuario usuario) {
-        userDao.regUsuario(usuario);
-    }
-
 
 
     @RequestMapping(value = "api/users", method = RequestMethod.POST)
