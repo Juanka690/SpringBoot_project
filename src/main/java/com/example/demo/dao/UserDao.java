@@ -28,9 +28,11 @@ public class UserDao {
         return usuarioRepository.findByEmail(email);
     }
 
-    public void regUsuario(Usuario usuario) {
+    public void registrarUsuario(Usuario usuario) {
         usuarioRepository.save(usuario);
     }
 
-
+    public void delete(Long id) {
+        usuarioRepository.deleteById(id);
+    }
 }

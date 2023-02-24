@@ -20,8 +20,7 @@ async function cargarUsers() {
   for (let usuario of usuarios) {
     let botonEliminar='<a href=\"#" onClick="deleteUser('+usuario.id+')" class=\"btn btn-danger btn-circle\"><i class=\"fas fa-trash\"></i></a>';
     //let botonEliminar='<a href=\"# onClick="deleteUser(666)" class=\"btn btn-danger btn-circle\"><i class=\"fas fa-trash\"></i></a>';
-    let usuarioHtml = '<tr><td>'+usuario.id+'</td><td>'+usuario.nombre+' '+usuario.apellido+'</td><td>'
-        +usuario.telefono+'</td><td>'+usuario.correo
+    let usuarioHtml = '<tr><td>'+usuario.id+'</td><td>'+usuario.nombre+'</td><td>'+usuario.apellido+'</td><td>'+usuario.email
         +'</td><td>'+botonEliminar+'</td></tr>';
     listadoHtml += usuarioHtml;
   }
@@ -36,7 +35,7 @@ async function deleteUser(id) {
     return;
   }
 
-  const request = await fetch('api/del_user/'+id, {
+  const request = await fetch('api/deleteUsuario/{id}'+id, {
     method: 'DELETE',
     headers: {
       'Accept': 'application/json',
